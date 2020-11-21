@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "856915954293",
+    "firebase_url": "https://giph-167d0.firebaseio.com",
+    "project_id": "giph-167d0",
+    "storage_bucket": "giph-167d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856915954293:android:b199f50f24b95e3860063c",
+        "android_client_info": {
+          "package_name": "com.vladiknt.giph"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856915954293-i31h6kdu7fa7ai3ncgn89k1rqsso1hq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Vs5tp75Ps2jnZ_Fxp_rvYJo08hyfLrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856915954293-i31h6kdu7fa7ai3ncgn89k1rqsso1hq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

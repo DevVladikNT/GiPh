@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:onClick="mainAccountButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="Account"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:onClick="mainCoinsButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="Get coins"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mainHentai"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:onClick="mainImageButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="Hentai"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mainAsians"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:onClick="mainImageButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="Asians"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
