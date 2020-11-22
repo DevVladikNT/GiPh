@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                mAuth.getCurrentUser().sendEmailVerification();
                                 Toast.makeText(RegisterActivity.this, "Please, activate your profile in letter.", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else

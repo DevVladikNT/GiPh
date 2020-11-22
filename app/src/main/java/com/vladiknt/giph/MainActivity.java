@@ -25,14 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void mainImageButton(View view) {
         Intent intent = new Intent(this, ImageActivity.class);
+        int maxPh, curPh;
+        String path;
         switch (view.getId()) {
             case R.id.mainHentai:
-                intent.putExtra("path", "anime");
+                maxPh = 5774; // TODO
+                curPh = (int)(Math.random() * 1000000) % maxPh + 1;
+                path = "Anime/" + curPh + ".jpg";
+                intent.putExtra("path", path);
+                intent.putExtra("counter", "Hentai #" + curPh);
                 break;
             case R.id.mainAsians:
-                intent.putExtra("path", "asian");
+                maxPh = 376; // TODO
+                curPh = (int)(Math.random() * 1000000) % maxPh + 1;
+                path = "Asian/" + curPh + ".jpg";
+                intent.putExtra("path", path);
+                intent.putExtra("counter", "Asians #" + curPh);
                 break;
         }
+        startActivity(intent);
     }
 
 }

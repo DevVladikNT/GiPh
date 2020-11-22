@@ -10,12 +10,15 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_above="@id/imageCounter">
+        android:layout_above="@id/imageCounter"
+        android:scrollbars="none">
 
         <ImageView
             android:id="@+id/imageSrc"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="fill_parent" />
 
     </HorizontalScrollView>
 
