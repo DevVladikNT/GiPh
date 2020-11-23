@@ -38,6 +38,20 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(reg);
     }
 
+    public void resetPasswordButton(View view) {
+        EditText et = findViewById(R.id.loginMail);
+        if (et.getText().toString().equals(""))
+            Toast.makeText(LoginActivity.this, "Enter your email.", Toast.LENGTH_SHORT).show();
+        else {
+            mAuth.sendPasswordResetEmail(et.getText().toString()).addOnCompleteListener(task -> {
+                if (task.isSuccessful())
+                    Toast.makeText(LoginActivity.this, "Letter was sent.", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(LoginActivity.this, "Incorrect email.", Toast.LENGTH_SHORT).show();
+            });
+        }
+    }
+
     public void enterButton(View view) {
         EditText et = findViewById(R.id.loginMail);
         String email = et.getText().toString();
@@ -53,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent main = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(main);
                             } else
-                                Toast.makeText(LoginActivity.this, "Please, check your email.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Please, check your letters.", Toast.LENGTH_SHORT).show();
                         } else {
                             EditText et = findViewById(R.id.loginPass);
                             et.clearComposingText();

@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/buttons_style_p"
@@ -17,6 +17,7 @@
         android:padding="8dp">
 
         <TextView
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -62,6 +63,14 @@
                 android:inputType="textPassword" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:onClick="resetPasswordButton"
+            android:text="Forgot password?"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

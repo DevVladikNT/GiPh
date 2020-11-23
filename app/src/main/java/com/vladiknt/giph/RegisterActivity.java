@@ -31,6 +31,21 @@ public class RegisterActivity extends AppCompatActivity {
         String pass1 = et.getText().toString();
         et = findViewById(R.id.regPass2);
         String pass2 = et.getText().toString();
+
+        // Проверка на возраст
+        et = findViewById(R.id.regAge);
+        try {
+            int age = Integer.parseInt(et.getText().toString());
+            if (age < 18) {
+                Toast.makeText(RegisterActivity.this, "Our app is only for adults.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (Exception e) {
+            Toast.makeText(RegisterActivity.this, "Enter correct age (single number).", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Регистрация
         if (pass1.equals(pass2)) {
             mAuth.createUserWithEmailAndPassword(email, pass1)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
