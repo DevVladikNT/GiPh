@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccActivity"></activity>
+        <activity android:name=".AppInfoActivity"></activity>
+        <activity android:name=".CreateAccActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".ImageActivity" />
         <activity android:name=".MainActivity" />

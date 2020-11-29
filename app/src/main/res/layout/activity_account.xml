@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="8 level"/>
+                android:text="0 level"/>
 
         </LinearLayout>
 
@@ -60,35 +60,35 @@
 
             <TextView
                 android:id="@+id/h1"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h2"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h3"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h4"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h5"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="2 level"/>
+                android:text="0 level"/>
 
         </LinearLayout>
 
@@ -159,21 +159,21 @@
 
             <TextView
                 android:id="@+id/a1"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a2"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a3"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -235,7 +235,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Joined in 10.09.2020"/>
+            android:text="Joined in "/>
 
     </LinearLayout>
 

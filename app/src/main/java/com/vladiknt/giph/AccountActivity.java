@@ -57,9 +57,9 @@ public class AccountActivity extends AppCompatActivity {
                 TextView[] expBarHentai = new TextView[]{findViewById(R.id.h1), findViewById(R.id.h2), findViewById(R.id.h3),
                         findViewById(R.id.h4), findViewById(R.id.h5), findViewById(R.id.h6), findViewById(R.id.h7),
                         findViewById(R.id.h8), findViewById(R.id.h9), findViewById(R.id.h10)};
-                int lvlHentai = 0;
+                int lvlHentai = 1;
                 while (true) {
-                    if (expHentai > Math.pow(2, lvlHentai))
+                    if (expHentai >= Math.pow(2, lvlHentai))
                         lvlHentai++;
                     else
                         break;
@@ -76,9 +76,9 @@ public class AccountActivity extends AppCompatActivity {
                 TextView[] expBarAsians = new TextView[]{findViewById(R.id.a1), findViewById(R.id.a2), findViewById(R.id.a3),
                         findViewById(R.id.a4), findViewById(R.id.a5), findViewById(R.id.a6), findViewById(R.id.a7),
                         findViewById(R.id.a8), findViewById(R.id.a9), findViewById(R.id.a10)};
-                int lvlAsians = 0;
+                int lvlAsians = 1;
                 while (true) {
-                    if (expAsians > Math.pow(2, lvlAsians))
+                    if (expAsians >= Math.pow(2, lvlAsians))
                         lvlAsians++;
                     else
                         break;

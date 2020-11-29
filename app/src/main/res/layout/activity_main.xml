@@ -7,24 +7,41 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/updateNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:text="New version available!\n
+Please, update this app.\nvk.com/gi_ph"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:background="@drawable/buttons_style_p"
+        android:padding="8dp"
+        android:elevation="8dp"/>
+
     <LinearLayout
-        android:id="@+id/mainLayoutCenter"
+        android:id="@+id/mainLayout"
+        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/buttons_style_p"
-                android:elevation="8dp"
+                android:elevation="6dp"
                 android:gravity="center"
                 android:onClick="mainAccountButton"
                 android:orientation="vertical"
@@ -33,16 +50,17 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/mainSpecial"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/buttons_style_p"
-                android:elevation="8dp"
+                android:elevation="6dp"
                 android:gravity="center"
-                android:onClick="mainCoinsButton"
+                android:onClick="mainImageButton"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:text="Get coins"
+                android:text="Special"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -50,7 +68,20 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:onClick="mainAppInfoButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="App Info"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/mainHentai"
@@ -58,12 +89,32 @@
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/buttons_style_p"
-                android:elevation="8dp"
+                android:elevation="6dp"
                 android:gravity="center"
                 android:onClick="mainImageButton"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:text="Hentai"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:onClick="mainCoinsButton"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:text="Get coins"
                 android:textSize="20sp" />
 
             <TextView
@@ -72,7 +123,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/buttons_style_p"
-                android:elevation="8dp"
+                android:elevation="6dp"
                 android:gravity="center"
                 android:onClick="mainImageButton"
                 android:orientation="vertical"
@@ -82,20 +133,18 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/mainCoinsText"
+            android:layout_width="216dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/buttons_style_p"
+            android:elevation="6dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Coins: 23"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/mainCoinsText"
-        android:layout_width="216dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/mainLayoutCenter"
-        android:layout_centerInParent="true"
-        android:layout_margin="8dp"
-        android:background="@drawable/buttons_style_p"
-        android:elevation="8dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Coins: 23"
-        android:textSize="20sp" />
+    </LinearLayout>
 
 </RelativeLayout>
