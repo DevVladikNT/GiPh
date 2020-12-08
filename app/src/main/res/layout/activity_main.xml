@@ -142,7 +142,7 @@ Please, update this app.\nvk.com/gi_ph"
             android:elevation="6dp"
             android:gravity="center"
             android:padding="8dp"
-            android:text="Coins: 23"
+            android:text="Coins: 0"
             android:textSize="20sp" />
 
     </LinearLayout>

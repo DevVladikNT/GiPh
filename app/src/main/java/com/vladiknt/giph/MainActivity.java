@@ -1,5 +1,6 @@
 package com.vladiknt.giph;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     FirebaseUser user;
-    private String APP_VERSION = "0.1.0"; // TODO не забудь обновить перед сборкой
+    private String APP_VERSION = "0.1.1"; // TODO не забудь обновить перед сборкой
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        TextView tv = findViewById(R.id.mainCoinsText);
+        db.collection("levels").document(user.getUid()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot verDoc = task.getResult();
+                int balance = Integer.parseInt(verDoc.get("coins").toString());
+                tv.clearComposingText();
+                tv.setText("Coins: " + balance);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        TextView tv = findViewById(R.id.mainCoinsText);
+        db.collection("levels").document(user.getUid()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot verDoc = task.getResult();
+                int balance = Integer.parseInt(verDoc.get("coins").toString());
+                tv.clearComposingText();
+                tv.setText("Coins: " + balance);
+            }
+        });
     }
 
     public void mainAppInfoButton(View view) {
@@ -54,13 +79,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void mainCoinsButton(View view) {
-        Toast.makeText(this, "Not working yet.", Toast.LENGTH_SHORT).show();
+        db.collection("levels").document(user.getUid()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                int expHentai = Integer.parseInt(document.get("hentai").toString());
+                int expAsians = Integer.parseInt(document.get("asians").toString());
+                int balance = Integer.parseInt(document.get("coins").toString());
+                balance += 10;
+                Map<String, Object> userLevels = new HashMap<>();
+                userLevels.put("hentai", expHentai);
+                userLevels.put("asians", expAsians);
+                userLevels.put("coins", balance);
+                db.collection("levels").document(user.getUid()).set(userLevels).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        Intent ad = new Intent(this, AdActivity.class);
+                        startActivityForResult(ad, 0);
+                    }
+                });
+            }
+        });
     }
 
     private int expHentai;
     private int expAsians;
     private int maxPhHentai; // Кол-во хентайных фоток в БД
     private int maxPhAsians; // Кол-во фоток азиаток в БД
+    private int balance; // Баланс пользователя
     public void mainImageButton(View view) {
         if (view.getId() == R.id.mainSpecial) {
             // TODO доделать спешл картинки
@@ -83,37 +127,44 @@ public class MainActivity extends AppCompatActivity {
                         DocumentSnapshot document = task1.getResult();
                         expHentai = Integer.parseInt(document.get("hentai").toString());
                         expAsians = Integer.parseInt(document.get("asians").toString());
+                        balance = Integer.parseInt(document.get("coins").toString());
 
-                        // Формируем запрос картинки
-                        Intent intent = new Intent(this, ImageActivity.class);
-                        int maxPh, curPh;
-                        String path;
-                        switch (view.getId()) {
-                            case R.id.mainHentai:
-                                curPh = (int)(Math.random() * 1000000) % maxPhHentai + 1;
-                                path = "Anime/" + curPh + ".jpg";
-                                intent.putExtra("path", path);
-                                intent.putExtra("counter", "Hentai #" + curPh);
-                                expHentai++;
-                                break;
-                            case R.id.mainAsians:
-                                curPh = (int)(Math.random() * 1000000) % maxPhAsians + 1;
-                                path = "Asian/" + curPh + ".jpg";
-                                intent.putExtra("path", path);
-                                intent.putExtra("counter", "Asians #" + curPh);
-                                expAsians++;
-                                break;
-                        }
+                        if (balance > 0) {
+                            balance--;
 
-                        // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
-                        Map<String, Object> userLevels = new HashMap<>();
-                        userLevels.put("hentai", expHentai);
-                        userLevels.put("asians", expAsians);
-                        db.collection("levels").document(user.getUid()).set(userLevels).addOnCompleteListener(task2 -> {
-                            if (task2.isSuccessful()) {
-                                startActivity(intent);
+                            // Формируем запрос картинки
+                            Intent intent = new Intent(this, ImageActivity.class);
+                            int curPh;
+                            String path;
+                            switch (view.getId()) {
+                                case R.id.mainHentai:
+                                    curPh = (int) (Math.random() * 1000000) % maxPhHentai + 1;
+                                    path = "Anime/" + curPh + ".jpg";
+                                    intent.putExtra("path", path);
+                                    intent.putExtra("counter", "Hentai #" + curPh);
+                                    expHentai++;
+                                    break;
+                                case R.id.mainAsians:
+                                    curPh = (int) (Math.random() * 1000000) % maxPhAsians + 1;
+                                    path = "Asian/" + curPh + ".jpg";
+                                    intent.putExtra("path", path);
+                                    intent.putExtra("counter", "Asians #" + curPh);
+                                    expAsians++;
+                                    break;
                             }
-                        });
+
+                            // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
+                            Map<String, Object> userLevels = new HashMap<>();
+                            userLevels.put("hentai", expHentai);
+                            userLevels.put("asians", expAsians);
+                            userLevels.put("coins", balance);
+                            db.collection("levels").document(user.getUid()).set(userLevels).addOnCompleteListener(task2 -> {
+                                if (task2.isSuccessful()) {
+                                    startActivityForResult(intent, 0);
+                                }
+                            });
+                        } else
+                            Toast.makeText(this, "Not enough coins.", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

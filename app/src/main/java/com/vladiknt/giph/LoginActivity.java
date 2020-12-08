@@ -57,24 +57,27 @@ public class LoginActivity extends AppCompatActivity {
         String email = et.getText().toString();
         et = findViewById(R.id.loginPass);
         String password = et.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user.isEmailVerified()) {
-                                Intent main = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(main);
-                            } else
-                                Toast.makeText(LoginActivity.this, "Please, check your letters.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            EditText et = findViewById(R.id.loginPass);
-                            et.clearComposingText();
-                            Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+        if (!email.equals("")) {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user.isEmailVerified()) {
+                                    Intent main = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(main);
+                                } else
+                                    Toast.makeText(LoginActivity.this, "Please, check your letters.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                EditText et = findViewById(R.id.loginPass);
+                                et.clearComposingText();
+                                Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        } else
+            Toast.makeText(LoginActivity.this, "Please, enter your email.", Toast.LENGTH_SHORT).show();
     }
 
 }

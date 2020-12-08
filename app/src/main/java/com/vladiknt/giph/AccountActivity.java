@@ -32,18 +32,13 @@ public class AccountActivity extends AppCompatActivity {
         db.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
-                if (document.get("nickname") == null) {
-                    Intent createAcc = new Intent(AccountActivity.this, CreateAccActivity.class);
-                    startActivity(createAcc);
-                    finish();
-                } else {
-                    TextView tv = findViewById(R.id.accountNickName);
-                    tv.clearComposingText();
-                    tv.setText(document.get("nickname").toString());
-                    tv = findViewById(R.id.accountDateJoined);
-                    tv.clearComposingText();
-                    tv.setText("Joined in " + document.get("dateJoined").toString());
-                }
+
+                TextView tv = findViewById(R.id.accountNickName);
+                tv.clearComposingText();
+                tv.setText(document.get("nickname").toString());
+                tv = findViewById(R.id.accountDateJoined);
+                tv.clearComposingText();
+                tv.setText("Joined in " + document.get("dateJoined").toString());
             }
         });
 
