@@ -18,9 +18,27 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:onClick="showNextButton"/>
 
     </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/nextImgButton"
+        android:visibility="invisible"
+        android:alpha="0.8"
+        android:textSize="20sp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/buttons_style_p"
+        android:elevation="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="reloadImg"
+        android:text="Next"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/imageCounter"
@@ -29,6 +47,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:text="Hentai #2478"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:background="@color/colorPrimary"/>
 
 </RelativeLayout>

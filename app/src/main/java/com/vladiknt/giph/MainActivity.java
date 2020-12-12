@@ -104,14 +104,9 @@ public class MainActivity extends AppCompatActivity {
     private int expAsians;
     private int maxPhHentai; // Кол-во хентайных фоток в БД
     private int maxPhAsians; // Кол-во фоток азиаток в БД
+    private int maxPhSpecial; // Кол-во спец фоток в БД
     private int balance; // Баланс пользователя
     public void mainImageButton(View view) {
-        if (view.getId() == R.id.mainSpecial) {
-            // TODO доделать спешл картинки
-            Toast.makeText(this, "Not working yet.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         db.collection("system").document("pictures").get().addOnCompleteListener(task -> {
@@ -120,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 DocumentSnapshot maxPhDoc = task.getResult();
                 maxPhHentai = Integer.parseInt(maxPhDoc.get("hentai").toString());
                 maxPhAsians = Integer.parseInt(maxPhDoc.get("asians").toString());
+                maxPhSpecial = Integer.parseInt(maxPhDoc.get("special").toString());
 
                 db.collection("levels").document(user.getUid()).get().addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
@@ -150,6 +146,17 @@ public class MainActivity extends AppCompatActivity {
                                     intent.putExtra("path", path);
                                     intent.putExtra("counter", "Asians #" + curPh);
                                     expAsians++;
+                                    break;
+                                case R.id.mainSpecial:
+                                    // Если время ивента еще не подошло
+                                    if (maxPhSpecial == 0) {
+                                        Toast.makeText(this, "Not opened now.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                    curPh = (int) (Math.random() * 1000000) % maxPhSpecial + 1;
+                                    path = "Special/" + curPh + ".jpg";
+                                    intent.putExtra("path", path);
+                                    intent.putExtra("counter", "Special #" + curPh);
                                     break;
                             }
 
