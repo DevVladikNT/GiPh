@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,6 +88,11 @@ public class AccountActivity extends AppCompatActivity {
                     printExpBar(expBarAsians, 0);
             }
         });
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(this, "You signed out. Close app.", Toast.LENGTH_SHORT).show();
     }
 
     private void printExpBar(TextView[] expBar, double value) {

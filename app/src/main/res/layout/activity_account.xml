@@ -8,6 +8,7 @@
     android:background="@color/colorPrimaryDark">
 
     <LinearLayout
+        android:id="@+id/accountInfo"
         android:background="@drawable/buttons_style_p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -238,5 +239,20 @@
             android:text="Joined in "/>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountInfo"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/buttons_style_p"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Sign out"
+        android:textColor="#FF6666"
+        android:textSize="20sp"
+        android:onClick="signOut" />
 
 </RelativeLayout>

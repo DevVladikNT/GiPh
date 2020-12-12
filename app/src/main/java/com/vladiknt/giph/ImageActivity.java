@@ -52,7 +52,10 @@ public class ImageActivity extends AppCompatActivity {
 
     public void showNextButton(View view) {
         TextView tv = findViewById(R.id.nextImgButton);
-        tv.setVisibility(View.VISIBLE);
+        if (tv.getVisibility() == View.INVISIBLE)
+            tv.setVisibility(View.VISIBLE);
+        else
+            tv.setVisibility(View.INVISIBLE);
     }
 
     FirebaseUser user;

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     FirebaseUser user;
-    private String APP_VERSION = "0.1.1"; // TODO не забудь обновить перед сборкой
+    private String APP_VERSION = "0.1.2"; // TODO не забудь обновить перед сборкой
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
