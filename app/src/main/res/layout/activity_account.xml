@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AccountActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="?attr/colorPrimaryVariant">
 
     <LinearLayout
         android:id="@+id/accountInfo"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/colorAccent"
+            android:background="?attr/colorOnPrimary"
             android:layout_marginBottom="8dp"/>
 
         <LinearLayout
@@ -61,70 +61,70 @@
 
             <TextView
                 android:id="@+id/h1"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h2"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h3"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h4"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h5"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h6"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h7"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h8"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h9"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/h10"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
@@ -160,70 +160,70 @@
 
             <TextView
                 android:id="@+id/a1"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a2"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a3"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a4"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a5"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a6"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a7"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a8"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a9"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/a10"
-                android:background="@color/colorPrimaryDark"
+                android:background="?attr/colorPrimaryVariant"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>

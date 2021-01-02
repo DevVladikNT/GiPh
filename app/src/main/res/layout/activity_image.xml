@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="?attr/colorPrimaryVariant"
     tools:context=".ImageActivity">
 
     <HorizontalScrollView
@@ -48,6 +48,6 @@
         android:gravity="center"
         android:text="Hentai #2478"
         android:textSize="20sp"
-        android:background="@color/colorPrimary"/>
+        android:background="?attr/colorPrimary"/>
 
 </RelativeLayout>
