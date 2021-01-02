@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -80,7 +81,7 @@ Please, update this app.\nvk.com/gi_ph"
                 android:onClick="mainAppInfoButton"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:text="App Info"
+                android:text="Message"
                 android:textSize="20sp" />
 
             <TextView

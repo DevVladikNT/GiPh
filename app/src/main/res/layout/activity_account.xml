@@ -241,7 +241,7 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="316dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/accountInfo"
         android:layout_centerInParent="true"

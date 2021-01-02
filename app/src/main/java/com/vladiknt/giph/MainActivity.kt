@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
 
     // TODO не забудь изменить перед заливкой
-    private val APP_VERSION = "0.1.2" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
+    private val APP_VERSION = "0.1.3" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
 
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     fun mainAppInfoButton(view: View?) {
         val appInfo = Intent(this, AppInfoActivity::class.java)
-        startActivity(appInfo)
+        startActivityForResult(appInfo, 0)
     }
 
     fun mainAccountButton(view: View?) {

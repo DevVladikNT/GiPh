@@ -106,6 +106,10 @@ class ImageActivity : AppCompatActivity() {
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Special #$curPh")
                                         }
+                                        else -> {
+                                            Toast.makeText(this, "Not working with codes", Toast.LENGTH_SHORT).show()
+                                            return@addOnCompleteListener
+                                        }
                                     }
 
                                     // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
