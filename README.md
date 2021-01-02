@@ -1,6 +1,11 @@
-<h1>GiPh (<i>18+</i>)</h1>
-<h4>My group for this project: <a href="https://vk.com/gi_ph">GiPh in VK</a><br>
-You can find me in <a href="https://vk.com/vladikvasilyev">VK</a></h4>
-<p>This is my android app for getting lots of 2D and 3D girls' pictures.<br>
-You need Android v5.0 and higher on mobile for correct work.<br>
-All pictures are in cloud :)</p>
+# GiPh (*18+*)
+This is my android app for getting lots of ~~hentai and porn~~ 2D and 3D girls' pictures.
+
+## You can find me in <a href="https://vk.com/vladikvasilyev">VK</a>
+I'm beginner at Android development, but I try with all my best.
+
+## My group for this project in <a href="https://vk.com/gi_ph">VK</a><br>
+There is my community in this group. You can advise me smth or discuss with other users there.
+
+### Others
+You need Android 5.0 and higher on mobile for correct work. All pictures are in cloud :)
