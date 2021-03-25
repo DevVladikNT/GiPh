@@ -38,11 +38,17 @@ class ImageActivity : AppCompatActivity() {
     }
 
     fun showNextButton(view: View?) {
-        val tv = findViewById<TextView>(R.id.nextImgButton)
-        if (tv.visibility == View.INVISIBLE)
-            tv.visibility = View.VISIBLE
+        val tvnext = findViewById<TextView>(R.id.nextImgButton)
+        if (tvnext.visibility == View.INVISIBLE)
+            tvnext.visibility = View.VISIBLE
         else
-            tv.visibility = View.INVISIBLE
+            tvnext.visibility = View.INVISIBLE
+
+        val tvreport = findViewById<TextView>(R.id.reportImgButton)
+        if (tvreport.visibility == View.INVISIBLE)
+            tvreport.visibility = View.VISIBLE
+        else
+            tvreport.visibility = View.INVISIBLE
     }
 
     var user: FirebaseUser? = null
@@ -128,6 +134,34 @@ class ImageActivity : AppCompatActivity() {
                         }
                 }
             }
+    }
+
+    var reported = false
+    fun reportImg(view: View?) {
+        if (!reported) {
+            db = FirebaseFirestore.getInstance()
+            val imgName = intent.getStringExtra("path").toString()
+            db!!.collection("system").document("reports").get()
+                .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+                    if (task.isSuccessful) {
+                        // TODO Аналогично выпилить куски кода в работе с данными пользователя в других классах
+                        val reports = task.result?.data
+                        if (reports?.contains(imgName)!!)
+                            reports[imgName] = reports[imgName] as Long + 1
+                        else
+                            reports[imgName] = 1
+
+                        db!!.collection("system").document("reports").set(reports)
+                            .addOnCompleteListener { task2: Task<Void?> ->
+                                if (task2.isSuccessful) {
+                                    Toast.makeText(this, "Your report has been sent", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                    }
+                }
+            reported = true
+        } else
+            Toast.makeText(this, "You`ve already sent report", Toast.LENGTH_SHORT).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
