@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LicenseActivity"
+    android:background="?attr/colorPrimaryVariant">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/buttons_style_p"
+        android:padding="12dp"
+        android:layout_margin="12dp"
+        android:elevation="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Application License"
+            android:textSize="20sp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:text="        This app was created not for commercial purpose.\n\n
+        In the event that I am the author or the representative
+who has the copyright to use the work used in this application and my contacts are
+not indicated in it, I undertake to contact the author of the application to resolve
+this situation.\n\n
+        I have no complaints about this application." />
+
+    </LinearLayout>
+
+</RelativeLayout>

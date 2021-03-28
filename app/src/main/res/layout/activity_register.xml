@@ -8,6 +8,7 @@
     tools:context=".RegisterActivity">
 
     <LinearLayout
+        android:id="@+id/regFields"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -145,5 +146,19 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/regFields"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/buttons_style_p"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="License"
+        android:textSize="20sp"
+        android:onClick="goToLicense" />
 
 </RelativeLayout>

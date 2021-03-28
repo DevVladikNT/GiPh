@@ -1,5 +1,6 @@
 package com.vladiknt.giph
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
@@ -22,6 +23,11 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+    }
+
+    fun goToLicense(view: View?) {
+        val lic = Intent(this, LicenseActivity::class.java)
+        startActivity(lic)
     }
 
     fun registerUser(view: View?) {

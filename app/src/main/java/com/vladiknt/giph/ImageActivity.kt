@@ -139,27 +139,42 @@ class ImageActivity : AppCompatActivity() {
     var reported = false
     fun reportImg(view: View?) {
         if (!reported) {
+            user = FirebaseAuth.getInstance().currentUser
             db = FirebaseFirestore.getInstance()
-            val imgName = intent.getStringExtra("path").toString()
-            db!!.collection("system").document("reports").get()
+            db!!.collection("levels").document(user!!.uid).get()
                 .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
                     if (task.isSuccessful) {
-                        // TODO Аналогично выпилить куски кода в работе с данными пользователя в других классах
-                        val reports = task.result?.data
-                        if (reports?.contains(imgName)!!)
-                            reports[imgName] = reports[imgName] as Long + 1
-                        else
-                            reports[imgName] = 1
+                        val info = task.result?.data
+                        if (info!!["asians"].toString().toInt() < 128 && info["hentai"].toString().toInt() < 128) {
+                            Toast.makeText(this, "You can report with level 8+", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val imgName = intent.getStringExtra("path").toString()
+                            db!!.collection("system").document("reports").get()
+                                .addOnCompleteListener { task1: Task<DocumentSnapshot?> ->
+                                    if (task1.isSuccessful) {
+                                        // TODO Аналогично выпилить куски кода в работе с данными пользователя в других классах
+                                        val reports = task1.result?.data
+                                        if (reports?.contains(imgName)!!)
+                                            reports[imgName] = reports[imgName] as Long + 1
+                                        else
+                                            reports[imgName] = 1
 
-                        db!!.collection("system").document("reports").set(reports)
-                            .addOnCompleteListener { task2: Task<Void?> ->
-                                if (task2.isSuccessful) {
-                                    Toast.makeText(this, "Your report has been sent", Toast.LENGTH_SHORT).show()
+                                        db!!.collection("system").document("reports").set(reports)
+                                            .addOnCompleteListener { task2: Task<Void?> ->
+                                                if (task2.isSuccessful) {
+                                                    Toast.makeText(
+                                                        this,
+                                                        "Your report has been sent",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                }
+                                            }
+                                    }
                                 }
-                            }
+                            reported = true
+                        }
                     }
                 }
-            reported = true
         } else
             Toast.makeText(this, "You`ve already sent report", Toast.LENGTH_SHORT).show()
     }
