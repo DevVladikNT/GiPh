@@ -1,12 +1,19 @@
 package com.vladiknt.giph
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdCallback
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private val APP_VERSION = "0.1.4" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
+    var mRewardedAd: RewardedAd? = null
+    var adRequest = AdRequest.Builder().build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +60,22 @@ class MainActivity : AppCompatActivity() {
                     tv.text = "Coins: $balance"
                 }
             }
+
+        // Загружаем рекламу
+        loadAd()
+        mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                //
+            }
+            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                //
+            }
+            override fun onAdShowedFullScreenContent() {
+                // Called when ad is dismissed.
+                // Don't set the ad reference to null to avoid showing the ad a second time.
+                mRewardedAd = null
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -79,8 +104,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mainCoinsButton(view: View?) {
+        // TODO
+        if (mRewardedAd != null){
+            mRewardedAd?.show(this, OnUserEarnedRewardListener() {
+                fun onUserEarnedReward(rewardItem: RewardItem) {
+                    //
+                }
+            })
+        } else {
+            Toast.makeText(this, "Ad isn`t ready", Toast.LENGTH_SHORT).show()
+        }
+        loadAd()
+
         // Функция, которая выдаёт рекламу
-        db!!.collection("levels").document(user!!.uid).get()
+        /* db!!.collection("levels").document(user!!.uid).get()
             .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
                 if (task.isSuccessful) {
                     val document = task.result
@@ -101,6 +138,20 @@ class MainActivity : AppCompatActivity() {
                         }
                 }
             }
+         */
+    }
+
+    private fun loadAd() {
+        RewardedAd.load(this,"ca-app-pub-3255498750378546~9689339872", adRequest, object : RewardedAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                //
+                mRewardedAd = null
+            }
+            override fun onAdLoaded(rewardedAd: RewardedAd) {
+                //
+                mRewardedAd = rewardedAd
+            }
+        })
     }
 
     private var expHentai = 0
