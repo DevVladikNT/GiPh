@@ -145,7 +145,7 @@ class ImageActivity : AppCompatActivity() {
                 .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
                     if (task.isSuccessful) {
                         val info = task.result?.data
-                        if (info!!["asians"].toString().toInt() < 128 && info["hentai"].toString().toInt() < 128) {
+                        if (info!!["asians"].toString().toInt() < 128 || info["hentai"].toString().toInt() < 128) {
                             Toast.makeText(this, "You can report with level 8+", Toast.LENGTH_SHORT).show()
                         } else {
                             val imgName = intent.getStringExtra("path").toString()

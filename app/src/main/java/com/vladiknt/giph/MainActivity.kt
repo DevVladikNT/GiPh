@@ -1,18 +1,15 @@
 package com.vladiknt.giph
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdCallback
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
 
     // TODO не забудь изменить перед заливкой
-    private val APP_VERSION = "0.1.4" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
+    private val APP_VERSION = "0.1.5" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
     var mRewardedAd: RewardedAd? = null
@@ -104,41 +101,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mainCoinsButton(view: View?) {
-        // TODO
         if (mRewardedAd != null){
             mRewardedAd?.show(this, OnUserEarnedRewardListener() {
-                fun onUserEarnedReward(rewardItem: RewardItem) {
-                    //
-                }
+                db = FirebaseFirestore.getInstance()
+                user = FirebaseAuth.getInstance().currentUser
+                db!!.collection("levels").document(user!!.uid).get()
+                        .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+                            if (task.isSuccessful) {
+                                val document = task.result?.data
+                                document!!["coins"] = document["coins"].toString().toInt() + 10
+                                db!!.collection("levels").document(user!!.uid).set(document)
+                                        .addOnCompleteListener { task1: Task<Void?> ->
+                                            if (task1.isSuccessful) {
+                                                Toast.makeText(this, "You got 10 coins", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                            }
+                        }
             })
+            loadAd()
         } else {
             Toast.makeText(this, "Ad isn`t ready", Toast.LENGTH_SHORT).show()
         }
-        loadAd()
-
-        // Функция, которая выдаёт рекламу
-        /* db!!.collection("levels").document(user!!.uid).get()
-            .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
-                if (task.isSuccessful) {
-                    val document = task.result
-                    val expHentai = document!!["hentai"].toString().toInt()
-                    val expAsians = document["asians"].toString().toInt()
-                    var balance = document["coins"].toString().toInt()
-                    balance += 10
-                    val userLevels: MutableMap<String, Any> = HashMap()
-                    userLevels["hentai"] = expHentai
-                    userLevels["asians"] = expAsians
-                    userLevels["coins"] = balance
-                    db!!.collection("levels").document(user!!.uid).set(userLevels)
-                        .addOnCompleteListener { task1: Task<Void?> ->
-                            if (task1.isSuccessful) {
-                                val ad = Intent(this, AdActivity::class.java)
-                                startActivityForResult(ad, 0)
-                            }
-                        }
-                }
-            }
-         */
     }
 
     private fun loadAd() {
