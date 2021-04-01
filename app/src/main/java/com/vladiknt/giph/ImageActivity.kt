@@ -129,7 +129,7 @@ class ImageActivity : AppCompatActivity() {
                                                 startActivityForResult(intent, 0)
                                             }
                                         }
-                                } else Toast.makeText(this, "Not enough coins.", Toast.LENGTH_SHORT).show()
+                                } else Toast.makeText(this, "Not enough coins", Toast.LENGTH_SHORT).show()
                             }
                         }
                 }

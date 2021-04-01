@@ -1,5 +1,6 @@
 package com.vladiknt.giph
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -27,19 +28,19 @@ class LoginActivity : AppCompatActivity() {
 
     fun registerButton(view: View?) {
         val reg = Intent(this, RegisterActivity::class.java)
-        startActivity(reg)
+        startActivity(reg, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
     fun resetPasswordButton(view: View?) {
         val et = findViewById<EditText>(R.id.loginMail)
         if (et.text.toString() == "")
-            Toast.makeText(this, "Enter your email.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show()
         else {
             mAuth!!.sendPasswordResetEmail(et.text.toString())
                 .addOnCompleteListener { task: Task<Void?> ->
                     if (task.isSuccessful)
-                        Toast.makeText(this, "Letter was sent.", Toast.LENGTH_SHORT).show()
-                    else Toast.makeText(this, "Incorrect email.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Letter was sent", Toast.LENGTH_SHORT).show()
+                    else Toast.makeText(this, "Incorrect email", Toast.LENGTH_SHORT).show()
                 }
         }
     }
@@ -57,13 +58,13 @@ class LoginActivity : AppCompatActivity() {
                         if (user!!.isEmailVerified) {
                             val main = Intent(this, MainActivity::class.java)
                             startActivity(main)
-                        } else Toast.makeText(this, "Please, check your letters.", Toast.LENGTH_SHORT).show()
+                        } else Toast.makeText(this, "Please, check your letters", Toast.LENGTH_SHORT).show()
                     } else {
                         val et = findViewById<EditText>(R.id.loginPass)
                         et.clearComposingText()
-                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
                     }
                 }
-        } else Toast.makeText(this, "Please, enter your email.", Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(this, "Please, enter your email", Toast.LENGTH_SHORT).show()
     }
 }

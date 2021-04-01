@@ -45,11 +45,11 @@ class RegisterActivity : AppCompatActivity() {
         try {
             val age = et.text.toString().toInt()
             if (age < 18) {
-                Toast.makeText(this, "Our app is only for adults.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Our app is only for adults", Toast.LENGTH_SHORT).show()
                 return
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Enter correct age (single number).", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter correct age (single number)", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -77,21 +77,21 @@ class RegisterActivity : AppCompatActivity() {
                                             .addOnCompleteListener { task2: Task<Void?> ->
                                                 if (task2.isSuccessful) {
                                                     mAuth!!.currentUser!!.sendEmailVerification()
-                                                    Toast.makeText(this, "Please, activate your profile in letter.", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(this, "Please, activate your profile in letter", Toast.LENGTH_SHORT).show()
                                                     finish()
-                                                } else Toast.makeText(this, "Error while adding user levels.", Toast.LENGTH_SHORT).show()
+                                                } else Toast.makeText(this, "Error while adding user levels", Toast.LENGTH_SHORT).show()
                                             }
-                                    } else Toast.makeText(this, "Error while adding user info.", Toast.LENGTH_SHORT).show()
+                                    } else Toast.makeText(this, "Error while adding user info", Toast.LENGTH_SHORT).show()
                                 }
-                        } else Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        } else Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
                     }
             } else {
                 et = findViewById(R.id.regPass1)
                 et.clearComposingText()
                 et = findViewById(R.id.regPass2)
                 et.clearComposingText()
-                Toast.makeText(this, "Enter your passwords again.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter your passwords again", Toast.LENGTH_SHORT).show()
             }
-        } else Toast.makeText(this, "Please, agree with license.", Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(this, "Please, agree with license", Toast.LENGTH_SHORT).show()
     }
 }

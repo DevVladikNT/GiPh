@@ -10,7 +10,7 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_above="@id/imageCounter"
+        android:layout_above="@id/imageDivider"
         android:scrollbars="none">
 
         <ImageView
@@ -56,6 +56,13 @@
         android:text="Report"
         android:textSize="20sp"
         android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/imageDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorOnPrimary"
+        android:layout_above="@id/imageCounter"/>
 
     <TextView
         android:id="@+id/imageCounter"

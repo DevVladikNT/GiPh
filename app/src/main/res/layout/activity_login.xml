@@ -22,7 +22,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Account"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?attr/colorOnPrimary"
+            android:layout_marginBottom="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +44,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:hint="example@company.com"
                 android:id="@+id/loginMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,6 +65,7 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:hint="********"
                 android:id="@+id/loginPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,7 +88,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttons_style_p"
@@ -92,7 +101,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttons_style_a"

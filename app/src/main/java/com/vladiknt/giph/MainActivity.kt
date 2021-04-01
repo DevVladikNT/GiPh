@@ -1,5 +1,6 @@
 package com.vladiknt.giph
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.*
-import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.gms.tasks.Task
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
     fun mainAccountButton(view: View?) {
         val account = Intent(this, AccountActivity::class.java)
-        startActivity(account)
+        startActivity(account, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
     fun mainCoinsButton(view: View?) {
@@ -173,6 +173,11 @@ class MainActivity : AppCompatActivity() {
                                     val path: String
                                     when (view.id) {
                                         R.id.mainHentai -> {
+                                            // Если профилактические работы
+                                            if (maxPhHentai == 0) {
+                                                Toast.makeText(this, "Not opened now", Toast.LENGTH_SHORT).show()
+                                                return@addOnCompleteListener
+                                            }
                                             curPh = (Math.random() * 1000000).toInt() % maxPhHentai + 1
                                             path = "Anime/$curPh.jpg"
                                             intent.putExtra("path", path)
@@ -180,6 +185,11 @@ class MainActivity : AppCompatActivity() {
                                             expHentai++
                                         }
                                         R.id.mainAsians -> {
+                                            // Если профилактические работы
+                                            if (maxPhAsians == 0) {
+                                                Toast.makeText(this, "Not opened now", Toast.LENGTH_SHORT).show()
+                                                return@addOnCompleteListener
+                                            }
                                             curPh = (Math.random() * 1000000).toInt() % maxPhAsians + 1
                                             path = "Asian/$curPh.jpg"
                                             intent.putExtra("path", path)
@@ -189,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                                         R.id.mainSpecial -> {
                                             // Если время ивента еще не подошло
                                             if (maxPhSpecial == 0) {
-                                                Toast.makeText(this, "Not opened now.", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(this, "Event ends", Toast.LENGTH_SHORT).show()
                                                 return@addOnCompleteListener
                                             }
                                             curPh = (Math.random() * 1000000).toInt() % maxPhSpecial + 1
@@ -210,7 +220,7 @@ class MainActivity : AppCompatActivity() {
                                                 startActivityForResult(intent, 0)
                                             }
                                         }
-                                } else Toast.makeText(this, "Not enough coins.", Toast.LENGTH_SHORT).show()
+                                } else Toast.makeText(this, "Not enough coins", Toast.LENGTH_SHORT).show()
                             }
                         }
                 }
