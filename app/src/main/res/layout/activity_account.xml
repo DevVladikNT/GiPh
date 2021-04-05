@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity"
-    android:background="?attr/colorPrimaryVariant">
+    android:background="?attr/colorPrimaryVariant"
+    tools:context=".AccountActivity">
 
     <LinearLayout
         android:id="@+id/accountInfo"
-        android:background="@drawable/buttons_style_p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/buttons_style_p"
         android:elevation="8dp"
-        android:layout_margin="8dp">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/accountNickName"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:text="Nickname"/>
+            android:layout_gravity="center"
+            android:text="Nickname"
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="?attr/colorOnPrimary"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="?attr/colorOnPrimary" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,94 +40,94 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Hentai"/>
+                android:text="Hentai"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/levelHentai"
-                android:gravity="end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="0 level"/>
+                android:gravity="end"
+                android:text="0 level"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="10dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/h1"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h2"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h3"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h4"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h5"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h6"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h7"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h8"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h9"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/h10"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
         </LinearLayout>
 
@@ -139,104 +139,104 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Asians"/>
+                android:text="Asians"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/levelAsians"
-                android:gravity="end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="0 level"/>
+                android:gravity="end"
+                android:text="0 level"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="10dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/a1"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a2"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a3"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a4"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a5"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a6"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a7"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a8"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a9"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
             <TextView
                 android:id="@+id/a10"
-                android:background="?attr/colorPrimaryVariant"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/colorPrimaryVariant" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/accountDateJoined"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Joined in "/>
+            android:layout_marginTop="8dp"
+            android:text="Joined in "
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -249,10 +249,10 @@
         android:background="@drawable/buttons_style_p"
         android:elevation="8dp"
         android:gravity="center"
+        android:onClick="signOut"
         android:padding="8dp"
         android:text="Sign out"
         android:textColor="#FF6666"
-        android:textSize="20sp"
-        android:onClick="signOut" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

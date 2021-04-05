@@ -18,23 +18,35 @@ import com.google.firebase.storage.FirebaseStorage
 class ImageActivity : AppCompatActivity() {
     var storage: FirebaseStorage? = null
 
+    companion object {
+        var loadedImg: ByteArray? = null // Буффер для изображения
+        var pathImg: String? = null // Путь, к которому относится сохраненное изображение
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
         storage = FirebaseStorage.getInstance()
 
+        val iv: ImageView = findViewById(R.id.imageSrc)
         val tv = findViewById<TextView>(R.id.imageCounter)
         tv.clearComposingText()
         tv.text = intent.getStringExtra("counter")
-
-        val iv: ImageView = findViewById(R.id.imageSrc)
         val path = intent.getStringExtra("path")
-        val THREE_MEGABYTES = (3 * 1024 * 1024).toLong()
-        storage!!.reference.child(path!!).getBytes(THREE_MEGABYTES)
-            .addOnSuccessListener { bytesPrm: ByteArray ->
-                val bmp = BitmapFactory.decodeByteArray(bytesPrm, 0, bytesPrm.size)
-                iv.setImageBitmap(bmp)
-            }
+
+        if (!pathImg.equals(path)) {
+            val THREE_MEGABYTES = (3 * 1024 * 1024).toLong()
+            storage!!.reference.child(path!!).getBytes(THREE_MEGABYTES)
+                    .addOnSuccessListener { bytesPrm: ByteArray ->
+                        loadedImg = bytesPrm
+                        pathImg = path
+                        val bmp = BitmapFactory.decodeByteArray(bytesPrm, 0, bytesPrm.size)
+                        iv.setImageBitmap(bmp)
+                    }
+        } else {
+            val bmp = BitmapFactory.decodeByteArray(loadedImg, 0, loadedImg!!.size)
+            iv.setImageBitmap(bmp)
+        }
     }
 
     fun showNextButton(view: View?) {
@@ -70,7 +82,6 @@ class ImageActivity : AppCompatActivity() {
                     val maxPhDoc = task.result
                     maxPhHentai = maxPhDoc!!["hentai"].toString().toInt()
                     maxPhAsians = maxPhDoc["asians"].toString().toInt()
-                    maxPhSpecial = maxPhDoc["special"].toString().toInt()
                     db!!.collection("levels").document(user!!.uid).get()
                         .addOnCompleteListener { task1: Task<DocumentSnapshot?> ->
                             if (task1.isSuccessful) {
@@ -100,17 +111,6 @@ class ImageActivity : AppCompatActivity() {
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Asians #$curPh")
                                             expAsians++
-                                        }
-                                        "Special" -> {
-                                            // Если время ивента еще не подошло
-                                            if (maxPhSpecial == 0) {
-                                                Toast.makeText(this, "Not opened now.", Toast.LENGTH_SHORT).show()
-                                                return@addOnCompleteListener
-                                            }
-                                            curPh = (Math.random() * 1000000).toInt() % maxPhSpecial + 1
-                                            path = "Special/$curPh.jpg"
-                                            intent.putExtra("path", path)
-                                            intent.putExtra("counter", "Special #$curPh")
                                         }
                                         else -> {
                                             Toast.makeText(this, "Not working with codes", Toast.LENGTH_SHORT).show()

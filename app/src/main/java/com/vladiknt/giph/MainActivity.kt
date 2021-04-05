@@ -9,8 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.*
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,11 +18,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
 
     // TODO не забудь изменить перед заливкой
-    private val APP_VERSION = "0.1.5" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
+    private val APP_VERSION = "0.1.6" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
-    var mRewardedAd: RewardedAd? = null
-    var adRequest = AdRequest.Builder().build()
+    var lastAd: Long = 0 // Когда последний раз запускали рекламу
+    var lastGame: Long = 0 // Когда последний раз запускали игру
+//    var mRewardedAd: RewardedAd? = null
+//    var adRequest = AdRequest.Builder().build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,20 +59,21 @@ class MainActivity : AppCompatActivity() {
             }
 
         // Загружаем рекламу
-        loadAd()
-        mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                //
-            }
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                //
-            }
-            override fun onAdShowedFullScreenContent() {
-                // Called when ad is dismissed.
-                // Don't set the ad reference to null to avoid showing the ad a second time.
-                mRewardedAd = null
-            }
-        }
+//        MobileAds.initialize(this) {}
+//        loadAd()
+//        mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+//            override fun onAdDismissedFullScreenContent() {
+//                //
+//            }
+//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+//                //
+//            }
+//            override fun onAdShowedFullScreenContent() {
+//                // Called when ad is dismissed.
+//                // Don't set the ad reference to null to avoid showing the ad a second time.
+//                mRewardedAd = null
+//            }
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -101,41 +102,71 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mainCoinsButton(view: View?) {
-        if (mRewardedAd != null){
-            mRewardedAd?.show(this, OnUserEarnedRewardListener() {
-                db = FirebaseFirestore.getInstance()
-                user = FirebaseAuth.getInstance().currentUser
-                db!!.collection("levels").document(user!!.uid).get()
-                        .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
-                            if (task.isSuccessful) {
-                                val document = task.result?.data
-                                document!!["coins"] = document["coins"].toString().toInt() + 10
-                                db!!.collection("levels").document(user!!.uid).set(document)
-                                        .addOnCompleteListener { task1: Task<Void?> ->
-                                            if (task1.isSuccessful) {
-                                                Toast.makeText(this, "You got 10 coins", Toast.LENGTH_SHORT).show()
-                                            }
+        if (System.currentTimeMillis() - lastAd > 60000) {
+            lastAd = System.currentTimeMillis()
+            db = FirebaseFirestore.getInstance()
+            user = FirebaseAuth.getInstance().currentUser
+            db!!.collection("levels").document(user!!.uid).get()
+                    .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+                        if (task.isSuccessful) {
+                            val document = task.result?.data
+                            document!!["coins"] = document["coins"].toString().toInt() + 10
+                            db!!.collection("levels").document(user!!.uid).set(document)
+                                    .addOnCompleteListener { task1: Task<Void?> ->
+                                        if (task1.isSuccessful) {
+                                            val coins = Intent(this, AdActivity::class.java)
+                                            startActivityForResult(coins, 0)
                                         }
-                            }
+                                    }
                         }
-            })
-            loadAd()
-        } else {
-            Toast.makeText(this, "Ad isn`t ready", Toast.LENGTH_SHORT).show()
-        }
+                    }
+        } else
+            Toast.makeText(this, "You can watch ad once a minute", Toast.LENGTH_SHORT).show()
+
+//        if (mRewardedAd != null){
+//            mRewardedAd?.show(this, OnUserEarnedRewardListener() {
+//                db = FirebaseFirestore.getInstance()
+//                user = FirebaseAuth.getInstance().currentUser
+//                db!!.collection("levels").document(user!!.uid).get()
+//                        .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+//                            if (task.isSuccessful) {
+//                                val document = task.result?.data
+//                                document!!["coins"] = document["coins"].toString().toInt() + 10
+//                                db!!.collection("levels").document(user!!.uid).set(document)
+//                                        .addOnCompleteListener { task1: Task<Void?> ->
+//                                            if (task1.isSuccessful) {
+//                                                Toast.makeText(this, "You got 10 coins", Toast.LENGTH_SHORT).show()
+//                                            }
+//                                        }
+//                            }
+//                        }
+//            })
+//            loadAd()
+//        } else {
+//            Toast.makeText(this, "Ad isn`t ready", Toast.LENGTH_SHORT).show()
+//        }
     }
 
-    private fun loadAd() {
-        RewardedAd.load(this,"ca-app-pub-3255498750378546~9689339872", adRequest, object : RewardedAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                //
-                mRewardedAd = null
-            }
-            override fun onAdLoaded(rewardedAd: RewardedAd) {
-                //
-                mRewardedAd = rewardedAd
-            }
-        })
+//    private fun loadAd() {
+//        RewardedAd.load(this,"ca-app-pub-3255498750378546~9689339872", adRequest, object : RewardedAdLoadCallback() {
+//            override fun onAdFailedToLoad(adError: LoadAdError) {
+//                //
+//                mRewardedAd = null
+//            }
+//            override fun onAdLoaded(rewardedAd: RewardedAd) {
+//                //
+//                mRewardedAd = rewardedAd
+//            }
+//        })
+//    }
+
+    fun gameButton(view: View?) {
+        if (System.currentTimeMillis() - lastGame > 60000) {
+            lastGame = System.currentTimeMillis()
+            val game = Intent(this, GameActivity::class.java)
+            startActivity(game, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+        } else
+            Toast.makeText(this, "You can play once a minute", Toast.LENGTH_SHORT).show()
     }
 
     private var expHentai = 0
@@ -155,7 +186,6 @@ class MainActivity : AppCompatActivity() {
                     val maxPhDoc = task.result
                     maxPhHentai = maxPhDoc!!["hentai"].toString().toInt()
                     maxPhAsians = maxPhDoc["asians"].toString().toInt()
-                    maxPhSpecial = maxPhDoc["special"].toString().toInt()
                     db!!.collection("levels").document(user!!.uid).get()
                         .addOnCompleteListener { task1: Task<DocumentSnapshot?> ->
                             if (task1.isSuccessful) {
@@ -195,17 +225,6 @@ class MainActivity : AppCompatActivity() {
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Asians #$curPh")
                                             expAsians++
-                                        }
-                                        R.id.mainSpecial -> {
-                                            // Если время ивента еще не подошло
-                                            if (maxPhSpecial == 0) {
-                                                Toast.makeText(this, "Event ends", Toast.LENGTH_SHORT).show()
-                                                return@addOnCompleteListener
-                                            }
-                                            curPh = (Math.random() * 1000000).toInt() % maxPhSpecial + 1
-                                            path = "Special/$curPh.jpg"
-                                            intent.putExtra("path", path)
-                                            intent.putExtra("counter", "Special #$curPh")
                                         }
                                     }
 

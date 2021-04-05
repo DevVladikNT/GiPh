@@ -18,19 +18,19 @@
         android:padding="8dp">
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="Register"
             android:textSize="20sp"
-            android:layout_marginBottom="8dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="?attr/colorOnPrimary"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="?attr/colorOnPrimary" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,10 +45,10 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:hint="example@company.com"
                 android:id="@+id/regMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="example@company.com"
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
@@ -66,10 +66,10 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:hint="enter your password"
                 android:id="@+id/regPass1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="enter password"
                 android:inputType="textPassword" />
 
         </LinearLayout>
@@ -87,10 +87,10 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:hint="repeat your password"
                 android:id="@+id/regPass2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="repeat password"
                 android:inputType="textPassword" />
 
         </LinearLayout>
@@ -108,10 +108,10 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:hint="any nickname"
                 android:id="@+id/regNickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Example"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -129,10 +129,10 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:hint="18+"
                 android:id="@+id/regAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="18+"
                 android:inputType="number" />
 
         </LinearLayout>
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I agree with application license."
-            android:textColor="#666666"/>
+            android:textColor="#666666" />
 
         <TextView
             android:layout_width="match_parent"
@@ -168,9 +168,10 @@
         android:background="@drawable/buttons_style_p"
         android:elevation="8dp"
         android:gravity="center"
+        android:onClick="goToLicense"
         android:padding="8dp"
         android:text="License"
         android:textSize="20sp"
-        android:onClick="goToLicense" />
+        android:visibility="invisible" />
 
 </RelativeLayout>
