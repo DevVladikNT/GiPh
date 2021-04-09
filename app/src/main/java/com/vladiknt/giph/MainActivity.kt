@@ -21,10 +21,12 @@ class MainActivity : AppCompatActivity() {
     private val APP_VERSION = "0.1.6" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
-    var lastAd: Long = 0 // Когда последний раз запускали рекламу
-    var lastGame: Long = 0 // Когда последний раз запускали игру
 //    var mRewardedAd: RewardedAd? = null
 //    var adRequest = AdRequest.Builder().build()
+
+    companion object {
+        var lastAd: Long = 0 // Когда последний раз запускали рекламу
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +103,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(account, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
+    fun activitiesButton(view: View?) {
+        val act = Intent(this, ActivitiesActivity::class.java)
+        startActivity(act, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+    }
+
     fun mainCoinsButton(view: View?) {
         if (System.currentTimeMillis() - lastAd > 60000) {
             lastAd = System.currentTimeMillis()
@@ -159,15 +166,6 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        })
 //    }
-
-    fun gameButton(view: View?) {
-        if (System.currentTimeMillis() - lastGame > 60000) {
-            lastGame = System.currentTimeMillis()
-            val game = Intent(this, GameActivity::class.java)
-            startActivity(game, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-        } else
-            Toast.makeText(this, "You can play once a minute", Toast.LENGTH_SHORT).show()
-    }
 
     private var expHentai = 0
     private var expAsians = 0

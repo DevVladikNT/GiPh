@@ -40,7 +40,6 @@ class GameActivity : AppCompatActivity() {
             .addOnSuccessListener { bytesPrm: ByteArray ->
                 val bmp = BitmapFactory.decodeByteArray(bytesPrm, 0, bytesPrm.size)
                 iv.setImageBitmap(bmp)
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             }
     }
 

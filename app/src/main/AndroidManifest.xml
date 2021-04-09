@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GiPh">
+        <activity android:name=".MangaActivity" />
+        <activity android:name=".ActivitiesActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".LicenseActivity" />
         <activity android:name=".AccountActivity" />

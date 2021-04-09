@@ -56,10 +56,10 @@ Please, update this app.\nvk.com/gi_ph"
                 android:background="@drawable/buttons_style_p"
                 android:elevation="6dp"
                 android:gravity="center"
-                android:onClick="gameButton"
+                android:onClick="activitiesButton"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:text="Game"
+                android:text="Activities"
                 android:textSize="20sp" />
 
         </LinearLayout>
