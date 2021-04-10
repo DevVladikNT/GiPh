@@ -27,10 +27,9 @@ class ActivitiesActivity : AppCompatActivity() {
             Toast.makeText(this, "You can play once a minute", Toast.LENGTH_SHORT).show()
     }
 
-    fun mangaButton(view: View?) {
-        val manga = Intent(this, MangaActivity::class.java)
-        manga.putExtra("name", "My-daughter-became-a-pornstar") // TODO поменять когда добавлю следующую мангу
-        startActivity(manga)
+    fun mangaListButton(view: View?) {
+        val mangaList = Intent(this, MangaListActivity::class.java)
+        startActivity(mangaList)
     }
 
 }

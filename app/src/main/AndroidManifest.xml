@@ -9,27 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GiPh">
+        <activity android:name=".MangaListActivity" />
         <activity android:name=".MangaActivity" />
-        <activity android:name=".ActivitiesActivity" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".LicenseActivity" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".AdActivity" />
-        <activity android:name=".AppInfoActivity" />
+        <activity android:name=".ActivitiesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".GameActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LicenseActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AdActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AppInfoActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".ImageActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3255498750378546~9689339872" />
     </application>
 
 </manifest>

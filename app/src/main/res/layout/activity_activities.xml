@@ -27,7 +27,7 @@
                 android:background="@drawable/buttons_style_p"
                 android:elevation="6dp"
                 android:gravity="center"
-                android:onClick="mangaButton"
+                android:onClick="mangaListButton"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:text="Manga"

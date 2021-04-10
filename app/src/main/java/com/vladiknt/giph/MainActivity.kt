@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -21,8 +20,6 @@ class MainActivity : AppCompatActivity() {
     private val APP_VERSION = "0.1.6" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
-//    var mRewardedAd: RewardedAd? = null
-//    var adRequest = AdRequest.Builder().build()
 
     companion object {
         var lastAd: Long = 0 // Когда последний раз запускали рекламу
@@ -59,23 +56,6 @@ class MainActivity : AppCompatActivity() {
                     tv.text = "Coins: $balance"
                 }
             }
-
-        // Загружаем рекламу
-//        MobileAds.initialize(this) {}
-//        loadAd()
-//        mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
-//            override fun onAdDismissedFullScreenContent() {
-//                //
-//            }
-//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-//                //
-//            }
-//            override fun onAdShowedFullScreenContent() {
-//                // Called when ad is dismissed.
-//                // Don't set the ad reference to null to avoid showing the ad a second time.
-//                mRewardedAd = null
-//            }
-//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -129,43 +109,7 @@ class MainActivity : AppCompatActivity() {
                     }
         } else
             Toast.makeText(this, "You can watch ad once a minute", Toast.LENGTH_SHORT).show()
-
-//        if (mRewardedAd != null){
-//            mRewardedAd?.show(this, OnUserEarnedRewardListener() {
-//                db = FirebaseFirestore.getInstance()
-//                user = FirebaseAuth.getInstance().currentUser
-//                db!!.collection("levels").document(user!!.uid).get()
-//                        .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
-//                            if (task.isSuccessful) {
-//                                val document = task.result?.data
-//                                document!!["coins"] = document["coins"].toString().toInt() + 10
-//                                db!!.collection("levels").document(user!!.uid).set(document)
-//                                        .addOnCompleteListener { task1: Task<Void?> ->
-//                                            if (task1.isSuccessful) {
-//                                                Toast.makeText(this, "You got 10 coins", Toast.LENGTH_SHORT).show()
-//                                            }
-//                                        }
-//                            }
-//                        }
-//            })
-//            loadAd()
-//        } else {
-//            Toast.makeText(this, "Ad isn`t ready", Toast.LENGTH_SHORT).show()
-//        }
     }
-
-//    private fun loadAd() {
-//        RewardedAd.load(this,"ca-app-pub-3255498750378546~9689339872", adRequest, object : RewardedAdLoadCallback() {
-//            override fun onAdFailedToLoad(adError: LoadAdError) {
-//                //
-//                mRewardedAd = null
-//            }
-//            override fun onAdLoaded(rewardedAd: RewardedAd) {
-//                //
-//                mRewardedAd = rewardedAd
-//            }
-//        })
-//    }
 
     private var expHentai = 0
     private var expAsians = 0

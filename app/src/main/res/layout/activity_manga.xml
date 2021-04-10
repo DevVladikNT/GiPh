@@ -10,8 +10,8 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_above="@id/mangaButtons"
+        android:layout_alignParentTop="true"
         android:scrollbars="none">
 
         <ImageView
@@ -32,15 +32,15 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/buttons_style_p"
             android:elevation="6dp"
             android:gravity="center"
+            android:onClick="backButton"
             android:padding="8dp"
             android:text="Back"
-            android:onClick="backButton"
             android:textSize="20sp" />
 
         <TextView
@@ -57,15 +57,15 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_margin="8dp"
+            android:layout_weight="1"
             android:background="@drawable/buttons_style_p"
             android:elevation="6dp"
             android:gravity="center"
+            android:onClick="nextButton"
             android:padding="8dp"
             android:text="Next"
-            android:onClick="nextButton"
             android:textSize="20sp" />
 
     </LinearLayout>
