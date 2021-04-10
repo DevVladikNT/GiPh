@@ -660,6 +660,417 @@ milf, femdom, mother, demon girl, rimjob, sweating, oyakodon"
 
             </LinearLayout>
 
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/a_book_where_miku_has_it_her_way"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/a_book_where_miku_has_it_her_way"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="A Book Where Miku Has It Her Way"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, nakadashi, blowjob, big ass"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/amayakashi_mate_pia"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/amayakashi_mate_pia"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="Amayakashi Mate Pia"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, stockings, schoolgirl uniform,
+paizuri, swimsuit, bikini, breast feeding"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/azulan_anime_ero_mousou_hon"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/azulan_anime_ero_mousou_hon"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="AzuLan Anime Ero Mousou Hon"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, lolicon, stockings"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/bunshin_shite_hamakaze_to_sanketsu_ecchi"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bunshin_shite_hamakaze_to_sanketsu_ecchi"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="Bunshin Shite Hamakaze to Sanketsu Ecchi"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, group, anal, blowjob, double penetration,
+harem, handjob, double vaginal, triple penetration, clone"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/introverted_beauty_gets_raped_over_and_over_by_her_homeroom_teacher"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/introverted_beauty_gets_raped_over_and_over_by_her_homeroom_teacher"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="Introverted Beauty Gets Raped Over and Over by Her Homeroom Teacher"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, schoolgirl uniform, nakadashi, rape, ahegao,
+X-Ray, teacher, big ass, fingering, hidden sex, wet clothes"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/introverted_beauty_gets_raped_over_and_over_by_her_homeroom_teacher_2"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/introverted_beauty_gets_raped_over_and_over_by_her_homeroom_teacher_2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="Introverted Beauty Gets Raped Over and Over by Her Homeroom Teacher 2"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, schoolgirl uniform, nakadashi, blowjob,
+ahegao, X-Ray, dilf, teacher, big ass, deepthroat, gokkun, hidden sex, doujinshi"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="mangaButton"
+                android:id="@+id/kimi_no_namida_no_riyuu_o_ore_wa_mada_shiranai"
+                android:background="@drawable/buttons_style_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/kimi_no_namida_no_riyuu_o_ore_wa_mada_shiranai"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:layout_marginStart="4dp"
+                        android:text="Kimi no Namida no Riyuu o Ore wa Mada Shiranai"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:textStyle="italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="big breasts, schoolgirl uniform, nakadashi, ahegao,
+defloration, netorare, cheating, big ass, hairy, sweating, cunnilingus, leg lock"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
