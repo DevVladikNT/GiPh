@@ -1,13 +1,16 @@
 # GiPh (*18+*)
 
-I'm beginner at Android development, but I try with all my best. <br>
-This is my android app for getting lots of ~~hentai and porn~~ 2D and 3D girls' pictures.
+I'm beginner at Android development, but I try with all my best.
+
+This is my android app for getting lots of 2D and 3D girls' pictures from cloud. <br>
+It\`ll save your phone\`s storage.
 
 It has:
-- Anime pictures (Hentai, Ecchi and others)
-- Asians pictures (Cosplay, Naked and others)
-- Special pictures (New Year, Halloween and others)
-- Pictures from our sponsors (Their own codes only)
+- 2D pictures (Hentai, Ecchi, Anime, Games)
+- 3D pictures (Cosplay, Naked, Asians)
+- Pictures from our sponsors (Their own codes to get it)
+- Manga (Several colored titles)
+- Games (Find pairs and others)
 
 ### Others
 
