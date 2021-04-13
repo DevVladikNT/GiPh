@@ -4,14 +4,45 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MangaListActivity : AppCompatActivity() {
+
+    var db: FirebaseFirestore? = null
+    var user: FirebaseUser? = null
+
+    companion object {
+        var userExp = -1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manga_list)
+
+        if (userExp == -1) {
+            user = FirebaseAuth.getInstance().currentUser
+            db = FirebaseFirestore.getInstance()
+            db!!.collection("levels").document(user!!.uid).get()
+                    .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+                        if (task.isSuccessful) {
+                            val info = task.result?.data
+                            userExp = info!!["hentai"].toString().toInt()
+                        }
+                    }
+        }
     }
 
     fun mangaButton(view: View?) {
+        if (userExp < 64) {
+            Toast.makeText(this, "You can read it with hentai level 6+", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val manga = Intent(this, MangaActivity::class.java)
         when (view!!.id) {
             R.id.a_book_where_miku_has_it_her_way -> manga.putExtra("name", "A Book Where Miku Has It Her Way")

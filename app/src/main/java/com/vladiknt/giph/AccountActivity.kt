@@ -107,7 +107,6 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun printExpBar(expBar: Array<TextView>, value: Double) {
-        // TODO переделать в соответствии с темой приложения
         for (tv in expBar) {
             tv.setBackgroundColor(resources.getColor(R.color.dayColorPrimaryDark))
         }

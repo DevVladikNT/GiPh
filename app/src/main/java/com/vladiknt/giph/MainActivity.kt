@@ -111,12 +111,8 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "You can watch ad once a minute", Toast.LENGTH_SHORT).show()
     }
 
-    private var expHentai = 0
-    private var expAsians = 0
     private var maxPhHentai = 0 // Кол-во хентайных фоток в БД
     private var maxPhAsians = 0 // Кол-во фоток азиаток в БД
-    private var maxPhSpecial = 0 // Кол-во спец фоток в БД
-    private var balance = 0 // Баланс пользователя
 
     fun mainImageButton(view: View) {
         db = FirebaseFirestore.getInstance()
@@ -132,12 +128,9 @@ class MainActivity : AppCompatActivity() {
                         .addOnCompleteListener { task1: Task<DocumentSnapshot?> ->
                             if (task1.isSuccessful) {
                                 // Получаем с БД опыт пользователя, чтобы увеличить на 1 в соответствующей категории
-                                val document = task1.result
-                                expHentai = document!!["hentai"].toString().toInt()
-                                expAsians = document["asians"].toString().toInt()
-                                balance = document["coins"].toString().toInt()
-                                if (balance > 0) {
-                                    balance--
+                                val document = task1.result?.data
+                                if (document!!["coins"].toString().toInt() > 0) {
+                                    document["coins"] = document["coins"].toString().toInt() - 1
 
                                     // Формируем запрос картинки
                                     val intent = Intent(this, ImageActivity::class.java)
@@ -154,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                                             path = "Anime/$curPh.jpg"
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Hentai #$curPh")
-                                            expHentai++
+                                            document["hentai"] = document["hentai"].toString().toInt() + 1
                                         }
                                         R.id.mainAsians -> {
                                             // Если профилактические работы
@@ -166,16 +159,12 @@ class MainActivity : AppCompatActivity() {
                                             path = "Asian/$curPh.jpg"
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Asians #$curPh")
-                                            expAsians++
+                                            document["asians"] = document["asians"].toString().toInt() + 1
                                         }
                                     }
 
                                     // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
-                                    val userLevels: MutableMap<String, Any> = HashMap()
-                                    userLevels["hentai"] = expHentai
-                                    userLevels["asians"] = expAsians
-                                    userLevels["coins"] = balance
-                                    db!!.collection("levels").document(user!!.uid).set(userLevels)
+                                    db!!.collection("levels").document(user!!.uid).set(document)
                                         .addOnCompleteListener { task2: Task<Void?> ->
                                             if (task2.isSuccessful) {
                                                 startActivityForResult(intent, 0)

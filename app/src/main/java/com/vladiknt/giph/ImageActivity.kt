@@ -65,12 +65,8 @@ class ImageActivity : AppCompatActivity() {
 
     var user: FirebaseUser? = null
     var db: FirebaseFirestore? = null
-    private var expHentai = 0
-    private var expAsians = 0
     private var maxPhHentai = 0 // Кол-во хентайных фоток в БД
     private var maxPhAsians = 0 // Кол-во фоток азиаток в БД
-    private var maxPhSpecial = 0 // Кол-во спец фоток в БД
-    private var balance = 0 // Баланс пользователя
 
     fun reloadImg(view: View?) {
         db = FirebaseFirestore.getInstance()
@@ -79,51 +75,72 @@ class ImageActivity : AppCompatActivity() {
             .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
                 if (task.isSuccessful) {
                     // Получаем с базы данных информацию о количестве картинок в соответствующем разделе
-                    val maxPhDoc = task.result
+                    var maxPhDoc = task.result
                     maxPhHentai = maxPhDoc!!["hentai"].toString().toInt()
                     maxPhAsians = maxPhDoc["asians"].toString().toInt()
                     db!!.collection("levels").document(user!!.uid).get()
                         .addOnCompleteListener { task1: Task<DocumentSnapshot?> ->
                             if (task1.isSuccessful) {
                                 // Получаем с БД опыт пользователя, чтобы увеличить на 1 в соответствующей категории
-                                val document = task1.result
-                                expHentai = document!!["hentai"].toString().toInt()
-                                expAsians = document["asians"].toString().toInt()
-                                balance = document["coins"].toString().toInt()
-                                if (balance > 0) {
-                                    balance--
+                                val document = task1.result?.data
+                                if (document!!["coins"].toString().toInt() > 0) {
+                                    document["coins"] = document["coins"].toString().toInt() - 1
 
                                     // Формируем запрос картинки
                                     val intent = Intent(this, ImageActivity::class.java)
-                                    val curPh: Int
-                                    val path: String
+                                    var curPh: Int
+                                    var path: String
                                     when (getIntent().getStringExtra("path")!!.split("/").toTypedArray()[0]) {
                                         "Anime" -> {
                                             curPh = (Math.random() * 1000000).toInt() % maxPhHentai + 1
                                             path = "Anime/$curPh.jpg"
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Hentai #$curPh")
-                                            expHentai++
+                                            document["hentai"] = document["hentai"].toString().toInt() + 1
                                         }
                                         "Asian" -> {
                                             curPh = (Math.random() * 1000000).toInt() % maxPhAsians + 1
                                             path = "Asian/$curPh.jpg"
                                             intent.putExtra("path", path)
                                             intent.putExtra("counter", "Asians #$curPh")
-                                            expAsians++
+                                            document["asians"] = document["asians"].toString().toInt() + 1
+                                        }
+                                        // Если вдруг чел ввел код и хочет дальше смотреть спец. фото
+                                        "Feature" -> {
+                                            val name = getIntent().getStringExtra("path")!!.split("/").toTypedArray()[1]
+                                            db!!.collection("features").document(name).get()
+                                                    .addOnCompleteListener { task: Task<DocumentSnapshot?> ->
+                                                        if (task.isSuccessful) {
+                                                            // Получаем с базы данных информацию о количестве картинок в соответствующем разделе
+                                                            maxPhDoc = task.result
+                                                            val maxPhCode = maxPhDoc!!["pictures"].toString().toInt()
+
+                                                            // Формируем запрос картинки
+                                                            curPh = (Math.random() * 1000000).toInt() % maxPhCode + 1
+                                                            path = "Feature/$name/$curPh.jpg"
+                                                            intent.putExtra("path", path)
+                                                            intent.putExtra("counter", "Special #$curPh")
+
+                                                            // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
+                                                            db!!.collection("levels").document(user!!.uid).set(document)
+                                                                    .addOnCompleteListener { task2: Task<Void?> ->
+                                                                        if (task2.isSuccessful) {
+                                                                            startActivity(intent)
+                                                                            finish()
+                                                                        }
+                                                                    }
+                                                        }
+                                                    }
+                                            return@addOnCompleteListener
                                         }
                                         else -> {
-                                            Toast.makeText(this, "Not working with codes", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(this, "Not working", Toast.LENGTH_SHORT).show()
                                             return@addOnCompleteListener
                                         }
                                     }
 
                                     // Записываем изменения в БД и открываем следующую активити, передавая путь для запроса картинки
-                                    val userLevels: MutableMap<String, Any> = HashMap()
-                                    userLevels["hentai"] = expHentai
-                                    userLevels["asians"] = expAsians
-                                    userLevels["coins"] = balance
-                                    db!!.collection("levels").document(user!!.uid).set(userLevels)
+                                    db!!.collection("levels").document(user!!.uid).set(document)
                                         .addOnCompleteListener { task2: Task<Void?> ->
                                             if (task2.isSuccessful) {
                                                 startActivityForResult(intent, 0)
@@ -146,7 +163,7 @@ class ImageActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val info = task.result?.data
                         if (info!!["asians"].toString().toInt() < 128 || info["hentai"].toString().toInt() < 128) {
-                            Toast.makeText(this, "You can report with level 8+", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "You can report with hentai and asians level 8+", Toast.LENGTH_SHORT).show()
                         } else {
                             val imgName = intent.getStringExtra("path").toString()
                             db!!.collection("system").document("reports").get()
