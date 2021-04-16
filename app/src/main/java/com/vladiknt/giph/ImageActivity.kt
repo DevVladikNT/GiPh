@@ -1,8 +1,10 @@
 package com.vladiknt.giph
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,7 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
-class ImageActivity : AppCompatActivity() {
+class ImageActivity : AppCompatActivity(), View.OnTouchListener{
     var storage: FirebaseStorage? = null
 
     companion object {
@@ -26,7 +28,7 @@ class ImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
-        storage = FirebaseStorage.getInstance()
+        findViewById<ImageView>(R.id.imageSrc).setOnTouchListener(this)
 
         val iv: ImageView = findViewById(R.id.imageSrc)
         val tv = findViewById<TextView>(R.id.imageCounter)
@@ -34,6 +36,7 @@ class ImageActivity : AppCompatActivity() {
         tv.text = intent.getStringExtra("counter")
         val path = intent.getStringExtra("path")
 
+        storage = FirebaseStorage.getInstance()
         if (!pathImg.equals(path)) {
             val THREE_MEGABYTES = (3 * 1024 * 1024).toLong()
             storage!!.reference.child(path!!).getBytes(THREE_MEGABYTES)
@@ -49,18 +52,30 @@ class ImageActivity : AppCompatActivity() {
         }
     }
 
-    fun showNextButton(view: View?) {
-        val tvnext = findViewById<TextView>(R.id.nextImgButton)
-        if (tvnext.visibility == View.INVISIBLE)
-            tvnext.visibility = View.VISIBLE
-        else
-            tvnext.visibility = View.INVISIBLE
+    // Обрабатывает нажатия пользователя
+    var pressTime: Long = 0
+    var lastTap: Long = 0
+    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                pressTime = System.currentTimeMillis()
 
-        val tvreport = findViewById<TextView>(R.id.reportImgButton)
-        if (tvreport.visibility == View.INVISIBLE)
-            tvreport.visibility = View.VISIBLE
-        else
-            tvreport.visibility = View.INVISIBLE
+                if (System.currentTimeMillis() - lastTap < 400)
+                    reloadImg()
+                else
+                    lastTap = System.currentTimeMillis()
+            }
+            MotionEvent.ACTION_UP -> {
+                if (System.currentTimeMillis() - pressTime > 1500) {
+                    val tvreport = findViewById<TextView>(R.id.reportImgButton)
+                    if (tvreport.visibility == View.INVISIBLE)
+                        tvreport.visibility = View.VISIBLE
+                    else
+                        tvreport.visibility = View.INVISIBLE
+                }
+            }
+        }
+        return true
     }
 
     var user: FirebaseUser? = null
@@ -68,7 +83,7 @@ class ImageActivity : AppCompatActivity() {
     private var maxPhHentai = 0 // Кол-во хентайных фоток в БД
     private var maxPhAsians = 0 // Кол-во фоток азиаток в БД
 
-    fun reloadImg(view: View?) {
+    fun reloadImg() {
         db = FirebaseFirestore.getInstance()
         user = FirebaseAuth.getInstance().currentUser
         db!!.collection("system").document("pictures").get()
