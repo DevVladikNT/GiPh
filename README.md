@@ -14,7 +14,7 @@ It has:
 
 ### Others
 
-You need Android 5.0 and higher on mobile for correct work.<br>
+You need Android 8.0 and higher on mobile for correct work.<br>
 All pictures are in cloud :)
 
 My group for this project in <a href="https://vk.com/gi_ph">VK</a><br>
