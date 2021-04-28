@@ -2,6 +2,8 @@ package com.vladiknt.giph
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -14,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AppInfoActivity : AppCompatActivity() {
+
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
 
@@ -41,6 +44,7 @@ class AppInfoActivity : AppCompatActivity() {
     }
 
     fun checkCode(view: View?) {
+        MainActivity.vibrate()
         val code = findViewById<EditText>(R.id.codeText)
         if (code.text.toString().startsWith("get/")) {
             db = FirebaseFirestore.getInstance()

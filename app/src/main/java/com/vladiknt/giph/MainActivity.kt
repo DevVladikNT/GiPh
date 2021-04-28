@@ -1,8 +1,11 @@
 package com.vladiknt.giph
 
 import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -23,11 +26,17 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var lastAd: Long = 0 // Когда последний раз запускали рекламу
+        var vibrator: Vibrator? = null // Для вибрации
+
+        fun vibrate() {
+            vibrator?.vibrate(VibrationEffect.createOneShot(3, VibrationEffect.DEFAULT_AMPLITUDE))
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         db = FirebaseFirestore.getInstance()
         user = FirebaseAuth.getInstance().currentUser
 
@@ -74,21 +83,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mainAppInfoButton(view: View?) {
+        vibrate()
         val appInfo = Intent(this, AppInfoActivity::class.java)
         startActivityForResult(appInfo, 0)
     }
 
     fun mainAccountButton(view: View?) {
+        vibrate()
         val account = Intent(this, AccountActivity::class.java)
         startActivity(account, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
     fun activitiesButton(view: View?) {
+        vibrate()
         val act = Intent(this, ActivitiesActivity::class.java)
         startActivity(act, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
     fun mainCoinsButton(view: View?) {
+        vibrate()
         if (System.currentTimeMillis() - lastAd > 60000) {
             lastAd = System.currentTimeMillis()
             db = FirebaseFirestore.getInstance()
@@ -115,6 +128,7 @@ class MainActivity : AppCompatActivity() {
     private var maxPhAsians = 0 // Кол-во фоток азиаток в БД
 
     fun mainImageButton(view: View) {
+        vibrate()
         db = FirebaseFirestore.getInstance()
         user = FirebaseAuth.getInstance().currentUser
         db!!.collection("system").document("pictures").get()

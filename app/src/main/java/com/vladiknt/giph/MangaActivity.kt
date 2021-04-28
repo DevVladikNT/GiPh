@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +14,7 @@ import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
 class MangaActivity : AppCompatActivity() {
+
     var storage: FirebaseStorage? = null
     val THREE_MEGABYTES = (3 * 1024 * 1024).toLong()
 
@@ -52,6 +55,7 @@ class MangaActivity : AppCompatActivity() {
     }
 
     fun nextButton(view: View?) {
+        MainActivity.vibrate()
         storage = FirebaseStorage.getInstance()
         val iv = findViewById<ImageView>(R.id.mangaImageSrc)
         val tv = findViewById<TextView>(R.id.mangaPages)
@@ -70,6 +74,7 @@ class MangaActivity : AppCompatActivity() {
     }
 
     fun backButton(view: View?) {
+        MainActivity.vibrate()
         storage = FirebaseStorage.getInstance()
         val iv = findViewById<ImageView>(R.id.mangaImageSrc)
         val tv = findViewById<TextView>(R.id.mangaPages)

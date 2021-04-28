@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
@@ -18,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
 class ImageActivity : AppCompatActivity(), View.OnTouchListener{
+
     var storage: FirebaseStorage? = null
 
     companion object {
@@ -60,13 +63,15 @@ class ImageActivity : AppCompatActivity(), View.OnTouchListener{
             MotionEvent.ACTION_DOWN -> {
                 pressTime = System.currentTimeMillis()
 
-                if (System.currentTimeMillis() - lastTap < 400)
+                if (System.currentTimeMillis() - lastTap < 400) {
+                    MainActivity.vibrate()
                     reloadImg()
-                else
+                } else
                     lastTap = System.currentTimeMillis()
             }
             MotionEvent.ACTION_UP -> {
                 if (System.currentTimeMillis() - pressTime > 1500) {
+                    MainActivity.vibrate()
                     val tvreport = findViewById<TextView>(R.id.reportImgButton)
                     if (tvreport.visibility == View.INVISIBLE)
                         tvreport.visibility = View.VISIBLE

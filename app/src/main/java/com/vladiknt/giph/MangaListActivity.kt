@@ -3,6 +3,8 @@ package com.vladiknt.giph
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
@@ -38,6 +40,7 @@ class MangaListActivity : AppCompatActivity() {
     }
 
     fun mangaButton(view: View?) {
+        MainActivity.vibrate()
         if (userExp < 64) {
             Toast.makeText(this, "You can read it with hentai level 6+", Toast.LENGTH_SHORT).show()
             return
