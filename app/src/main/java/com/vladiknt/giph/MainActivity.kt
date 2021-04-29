@@ -3,6 +3,7 @@ package com.vladiknt.giph
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -20,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
 
     // TODO не забудь изменить перед заливкой
-    private val APP_VERSION = "0.1.6" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
+    private val APP_VERSION = "0.1.7" // Текущая версия (сверяется с версией в БД, чтобы показать уведомление при наличии обновления)
     var db: FirebaseFirestore? = null
     var user: FirebaseUser? = null
 
@@ -29,7 +30,10 @@ class MainActivity : AppCompatActivity() {
         var vibrator: Vibrator? = null // Для вибрации
 
         fun vibrate() {
-            vibrator?.vibrate(VibrationEffect.createOneShot(3, VibrationEffect.DEFAULT_AMPLITUDE))
+            if (Build.VERSION.SDK_INT >= 26)
+                vibrator?.vibrate(VibrationEffect.createOneShot(3, VibrationEffect.DEFAULT_AMPLITUDE))
+            else
+                vibrator?.vibrate(3)
         }
     }
 
