@@ -18,7 +18,7 @@ class AdActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         val iv: ImageView = findViewById(R.id.adImg)
         val THREE_MEGABYTES = (3 * 1024 * 1024).toLong()
-        storage!!.reference.child("Advertisements/current.jpg").getBytes(THREE_MEGABYTES)
+        storage!!.reference.child("Advertisements/current${(Math.random() * 1000000).toInt() % 2 + 1}.jpg").getBytes(THREE_MEGABYTES)
                 .addOnSuccessListener { bytesPrm: ByteArray ->
                     val bmp = BitmapFactory.decodeByteArray(bytesPrm, 0, bytesPrm.size)
                     iv.setImageBitmap(bmp)

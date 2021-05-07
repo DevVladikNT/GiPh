@@ -53,6 +53,7 @@ class MangaListActivity : AppCompatActivity() {
             R.id.amayakashi_mate_pia -> manga.putExtra("name", "Amayakashi Mate Pia")
             R.id.azulan_anime_ero_mousou_hon -> manga.putExtra("name", "AzuLan Anime Ero Mousou Hon")
             R.id.bunshin_shite_hamakaze_to_sanketsu_ecchi -> manga.putExtra("name", "Bunshin Shite Hamakaze to Sanketsu Ecchi")
+            R.id.coppelia_brothel -> manga.putExtra("name", "Coppelia Brothel")
             R.id.guide_on_how_to_completely_defeat_boys -> manga.putExtra("name", "Guide on How to Completely Defeat Boys")
             R.id.intolerable_classmate -> manga.putExtra("name", "Intolerable Classmate")
             R.id.introverted_beauty_gets_raped_over_and_over_by_her_homeroom_teacher -> manga.putExtra("name", "Introverted Beauty Gets Raped Over and Over by Her Homeroom Teacher")

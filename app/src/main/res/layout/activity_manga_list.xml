@@ -311,6 +311,65 @@ harem, handjob, double vaginal, triple penetration, clone"
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/coppelia_brothel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/buttons_style_p"
+                android:elevation="8dp"
+                android:onClick="mangaButton"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/coppelia_brothel" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center"
+                        android:text="Coppelia Brothel"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="?attr/colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="amputee, gloves, hairjob, impregnation,
+lactation, lingerie, nakadashi, stockings, twintails, X-Ray"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/guide_on_how_to_completely_defeat_boys"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
